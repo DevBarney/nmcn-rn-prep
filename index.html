@@ -3,119 +3,83 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Nightingale Desk — NMCN RN prep</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,520;9..144,640&family=Outfit:wght@380;500;640&display=swap" rel="stylesheet">
+<title>Nightingale Desk - NMCN RN prep</title>
 <style>
 :root {
-  --bg: #efe6d8;
-  --bg2: #e7dccb;
-  --ink: #1b2422;
-  --muted: #5e675f;
-  --teal: #145e56;
-  --teal2: #1d7a70;
-  --card: #fbf7f1;
-  --line: #e0d3c2;
-  --coral: #a33b2c;
-  --gold: #8d6430;
-  --ok: #1e6b45;
-  --shadow: 0 16px 40px rgba(48, 36, 18, .08);
-  --nav: 4.6rem;
+  --background: #f4f6f8; --foreground: #1c2428; --muted: #5d6b73; --card: #ffffff;
+  --border: #d7dee3; --primary: #0f6e66; --primary-fg: #f4fffd; --danger: #9d3b32;
+  --ok: #1d6b45; --ring: #0f6e66; --shadow: 0 1px 2px rgb(28 36 40 / .06);
+  --radius: 12px; --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  font: 100%/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--foreground); background: var(--background);
+}
+@media (prefers-color-scheme: dark) {
+  :root { --background:#12181b; --foreground:#e7eef1; --muted:#9aabb4; --card:#1b2428; --border:#2c3940; --primary:#3dbeaf; --primary-fg:#06211e; --danger:#e07a72; --ok:#7dcea5; --ring:#3dbeaf; --shadow:none; }
 }
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
-body {
-  font-family: Outfit, "Segoe UI", sans-serif;
-  color: var(--ink);
-  background:
-    radial-gradient(900px 420px at 100% -10%, #f6e7cf 0%, transparent 55%),
-    linear-gradient(180deg, #f3ebdf, var(--bg) 28%);
-  min-height: 100vh;
-}
-button, input, select { font: inherit; color: inherit; }
+body { margin: 0; min-height: 100dvh; }
+button, input { font: inherit; color: inherit; }
 button { cursor: pointer; }
-h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 560; letter-spacing: -.02em; margin: 0; }
-.app { max-width: 1080px; margin: 0 auto; padding: 1.1rem 1rem 6.2rem; }
-.top {
-  display: flex; justify-content: space-between; gap: 1rem; align-items: end;
-  margin-bottom: 1.1rem;
-}
-.mark { font-family: Fraunces, Georgia, serif; font-size: 1.35rem; line-height: 1; }
-.mark span { display: block; font-family: Outfit, sans-serif; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .28rem; }
-.sub { color: var(--muted); font-size: .92rem; max-width: 38rem; }
-.grid { display: grid; gap: .8rem; }
-.stats { grid-template-columns: repeat(3, 1fr); }
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  padding: 1rem 1rem .95rem;
-  box-shadow: var(--shadow);
-}
-.card h3 { font-size: 1.02rem; margin-bottom: .25rem; }
-.k { font-family: Fraunces, Georgia, serif; font-size: 1.7rem; line-height: 1; }
-.lbl { color: var(--muted); font-size: .78rem; letter-spacing: .04em; text-transform: uppercase; }
-.actions { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .9rem; }
-.btn {
-  border: 0; border-radius: 999px; padding: .72rem 1rem;
-  background: var(--teal); color: #f7f3ea; font-weight: 560;
-}
-.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-.btn.warn { background: var(--coral); }
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.skip { position: absolute; left: .6rem; top: -3rem; background: var(--primary); color: var(--primary-fg); padding: .4rem .7rem; border-radius: 8px; }
+.skip:focus { top: .6rem; }
+.app { max-width: 880px; margin: 0 auto; padding: 1rem 1rem 6.4rem; }
+.top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.mark { font-size: 1.15rem; font-weight: 620; letter-spacing: -.02em; }
+.mark span { display: block; font-family: inherit; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; font-size: .68rem; color: var(--muted); margin-bottom: .15rem; }
+h1,h2,h3 { font-weight: 620; letter-spacing: -.03em; line-height: 1.15; margin: 0 0 .35rem; text-wrap: balance; }
+.sub,.note { color: var(--muted); font-size: .92rem; max-width: 65ch; }
+.grid { display: grid; gap: .7rem; }
+.stats { grid-template-columns: 1fr 1fr; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: .9rem 1rem; box-shadow: var(--shadow); }
+.k { font-size: 1.6rem; font-weight: 620; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.lbl { color: var(--muted); font-size: .75rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; margin: .85rem 0; }
+.btn,.row,.opt,.chip,.qgrid button { transition: transform 140ms var(--ease), background 140ms ease, border-color 140ms ease; }
+.btn:active,.row:active,.opt:active { transform: scale(0.98); }
+.btn { border: 0; border-radius: 10px; padding: .7rem .95rem; background: var(--primary); color: var(--primary-fg); font-weight: 590; }
+.btn.ghost { background: transparent; color: var(--foreground); border: 1px solid var(--border); }
+.btn.warn { background: var(--danger); color: #fff; }
 .btn:disabled { opacity: .45; }
-.nav {
-  position: fixed; left: 0; right: 0; bottom: 0;
-  display: flex; justify-content: space-around;
-  background: #1b2422; color: #f4ecdf;
-  padding: .45rem .2rem calc(.45rem + env(safe-area-inset-bottom));
-  z-index: 5;
+.nav { position: fixed; left: .7rem; right: .7rem; bottom: .55rem; display: flex; justify-content: space-between; gap: .2rem; padding: .35rem; border-radius: 16px; z-index: 4; background: color-mix(in srgb, var(--card) 78%, transparent); border: 1px solid var(--border); backdrop-filter: blur(18px) saturate(1.4); box-shadow: 0 10px 30px rgb(18 24 27 / .12); }
+.nav button { flex: 1; border: 0; background: transparent; color: var(--muted); border-radius: 12px; padding: .55rem .2rem; font-size: .72rem; font-weight: 560; }
+.nav button.on { background: var(--foreground); color: var(--background); }
+.qstem { font-size: 1.05rem; line-height: 1.45; margin: .35rem 0 .8rem; }
+.opt { width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: .78rem .85rem; margin-bottom: .45rem; }
+.opt.on { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, var(--card)); }
+.opt.good { border-color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, var(--card)); }
+.opt.bad { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 12%, var(--card)); }
+.meta { display: flex; justify-content: space-between; gap: .6rem; color: var(--muted); font-size: .82rem; }
+.timer { font-variant-numeric: tabular-nums; font-weight: 640; color: var(--foreground); }
+.timer.hot { color: var(--danger); }
+.rationale { background: color-mix(in srgb, var(--primary) 8%, var(--card)); border-radius: 10px; padding: .75rem; margin-top: .35rem; }
+.qgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: .3rem; margin-top: .7rem; }
+.qgrid button { border: 1px solid var(--border); background: var(--card); border-radius: 8px; padding: .38rem 0; font-size: .75rem; font-variant-numeric: tabular-nums; }
+.qgrid button.done { background: color-mix(in srgb, var(--primary) 14%, var(--card)); }
+.qgrid button.flag { outline: 2px solid #9a7340; }
+.qgrid button.cur { background: var(--foreground); color: var(--background); }
+.row { width: 100%; text-align: left; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: .8rem .9rem; margin-bottom: .5rem; }
+.step { display: flex; gap: .6rem; align-items: flex-start; margin: .4rem 0; }
+.step input { margin-top: .3rem; width: 1.05rem; height: 1.05rem; }
+.warnbox { border-left: 3px solid var(--primary); padding-left: .7rem; }
+#cans { width: 100%; padding: .75rem .8rem; border-radius: 10px; border: 1px solid var(--border); background: var(--card); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { filter: brightness(1.05); }
+  .row:hover, .opt:hover { border-color: color-mix(in srgb, var(--primary) 45%, var(--border)); }
 }
-.nav button {
-  background: transparent; border: 0; color: #cbbfaa;
-  font-size: .68rem; letter-spacing: .04em; text-transform: uppercase;
-  padding: .35rem .2rem; min-width: 3.4rem;
-}
-.nav button.on { color: #fff; }
-.qstem { font-size: 1.08rem; line-height: 1.45; margin: .2rem 0 .85rem; }
-.opt {
-  width: 100%; text-align: left; background: #fff;
-  border: 1px solid var(--line); border-radius: 14px;
-  padding: .8rem .85rem; margin-bottom: .5rem;
-}
-.opt.on { border-color: var(--teal); background: #eef6f4; }
-.opt.good { border-color: var(--ok); background: #e8f5ee; }
-.opt.bad { border-color: var(--coral); background: #fbeeed; }
-.meta { display: flex; justify-content: space-between; gap: .6rem; color: var(--muted); font-size: .82rem; margin-bottom: .45rem; }
-.timer { font-variant-numeric: tabular-nums; font-weight: 640; color: var(--ink); }
-.timer.hot { color: var(--coral); }
-.rationale { background: #f4efe4; border-radius: 12px; padding: .75rem .8rem; margin-top: .4rem; font-size: .92rem; }
-.chips { display: flex; gap: .4rem; flex-wrap: wrap; margin: .4rem 0 .8rem; }
-.chip { border: 1px solid var(--line); background: transparent; border-radius: 999px; padding: .4rem .7rem; font-size: .82rem; }
-.chip.on { background: var(--ink); color: #f7f3ea; border-color: var(--ink); }
-.qgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: .35rem; margin-top: .7rem; }
-.qgrid button { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: .4rem 0; font-size: .78rem; }
-.qgrid button.done { background: #e7f0ee; }
-.qgrid button.flag { outline: 2px solid var(--gold); }
-.qgrid button.cur { background: var(--ink); color: #fff; }
-.list button.row, .row {
-  width: 100%; text-align: left; background: var(--card);
-  border: 1px solid var(--line); border-radius: 16px; padding: .85rem .9rem; margin-bottom: .55rem;
-}
-.step { display: flex; gap: .6rem; align-items: flex-start; margin: .45rem 0; }
-.step input { margin-top: .25rem; width: 1.05rem; height: 1.05rem; }
-.note { font-size: .86rem; color: var(--muted); line-height: 1.45; }
-.warnbox { border-left: 3px solid var(--gold); padding-left: .7rem; margin: .6rem 0 0; }
-@media (min-width: 860px) {
+@media (prefers-reduced-motion: reduce) { .btn,.row,.opt,.chip,.qgrid button { transition: none; } }
+@media (prefers-reduced-transparency: reduce) { .nav { background: var(--card); backdrop-filter: none; } }
+@media (min-width: 800px) {
   .app { padding-bottom: 2rem; }
-  .nav { position: static; background: transparent; color: inherit; padding: 0; margin: -.2rem 0 1rem; justify-content: flex-start; gap: .3rem; }
-  .nav button { color: var(--muted); border-radius: 999px; padding: .45rem .7rem; }
-  .nav button.on { background: var(--ink); color: #f7f3ea; }
   .stats { grid-template-columns: repeat(4, 1fr); }
+  .nav { position: static; margin: 0 0 1rem; background: transparent; border: 0; box-shadow: none; backdrop-filter: none; padding: 0; justify-content: flex-start; }
+  .nav button { flex: 0; padding: .45rem .75rem; }
   .qgrid { grid-template-columns: repeat(12, 1fr); }
 }
 </style>
 </head>
 <body>
+<a class="skip" href="#view">Skip to content</a>
 <div class="app">
   <header class="top">
     <div class="mark"><span>Nightingale Desk</span>NMCN RN prep</div>
@@ -182,15 +146,15 @@ function home() {
   const s = stats();
   const bars = Object.entries(s.by).map(([name, b]) => {
     const p = b.n ? Math.round(b.ok / b.n * 100) : 0;
-    return `<div class="card"><div class="lbl">${esc(name)}</div><div class="k">${b.n?p+'%':'—'}</div><div class="note">${b.ok}/${b.n} correct · ${b.total} in bank</div></div>`;
+    return `<div class="card"><div class="lbl">${esc(name)}</div><div class="k">${b.n?p+'%':'-'}</div><div class="note">${b.ok}/${b.n} correct · ${b.total} in bank</div></div>`;
   }).join("");
   return `
     <p class="sub">A desk for the Nursing and Midwifery Council of Nigeria RN exam: timed CBT, tutor practice, OSCE talk-throughs, and the unique items from your attached bank.</p>
     <div class="grid stats" style="margin-top:1rem">
       <div class="card"><div class="lbl">Answered</div><div class="k">${s.n}</div><div class="note">of ${BANK.length} unique items from your bank</div></div>
-      <div class="card"><div class="lbl">Accuracy</div><div class="k">${s.n?s.pct+'%':'—'}</div><div class="note">${s.ok} correct</div></div>
+      <div class="card"><div class="lbl">Accuracy</div><div class="k">${s.n?s.pct+'%':'-'}</div><div class="note">${s.ok} correct</div></div>
       <div class="card"><div class="lbl">OSCE drills</div><div class="k">${Object.keys(state.osce).length}</div><div class="note">of ${OSCE.length} stations</div></div>
-      <div class="card"><div class="lbl">Drug calc</div><div class="k">${state.calcs.n?Math.round(state.calcs.ok/state.calcs.n*100)+'%':'—'}</div><div class="note">${state.calcs.ok}/${state.calcs.n} correct</div></div>
+      <div class="card"><div class="lbl">Drug calc</div><div class="k">${state.calcs.n?Math.round(state.calcs.ok/state.calcs.n*100)+'%':'-'}</div><div class="note">${state.calcs.ok}/${state.calcs.n} correct</div></div>
     </div>
     <div class="actions">
       <button class="btn" data-act="start-cbt" data-n="50">Start 50-item CBT</button>
@@ -200,7 +164,7 @@ function home() {
     <div class="grid" style="margin-top:.9rem">${bars}</div>
     <div class="card" style="margin-top:.9rem">
       <h3>How this exam is usually run</h3>
-      <p class="note">Recent NMCN professional exams use a computer-based objective paper plus an OSCE of about 12 stations, roughly 5 minutes each. Candidate notices have described an objective paper of about 250 items in 2 hours 30 minutes. Pass mark is commonly cited at 50%. Confirm the notice for your own diet — papers and timing can change.</p>
+      <p class="note">Recent NMCN professional exams use a computer-based objective paper plus an OSCE of about 12 stations, roughly 5 minutes each. Candidate notices have described an objective paper of about 250 items in 2 hours 30 minutes. Pass mark is commonly cited at 50%. Confirm the notice for your own diet - papers and timing can change.</p>
       <p class="note warnbox">This desk uses your spreadsheet, NCLEX_5000_Question_Bank.xlsx. It has 5,000 rows and 25 unique stems: the same items repeated with the options rotated. Duplicates are removed so a paper is not the same five questions over and over. Nothing else has been added to the bank.</p>
     </div>
     <div class="card" style="margin-top:.8rem">
